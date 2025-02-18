@@ -133,7 +133,7 @@ public class Calculator extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,8 +224,8 @@ public class Calculator extends javax.swing.JFrame {
         int so1 = Integer.parseInt(so1Str);
         int so2 = Integer.parseInt(so2Str);
 
-        // Tính chia
-        int ketQua = so1 / so2;
+        // Tính nhan
+        int ketQua = so1 * so2;
 
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
@@ -236,7 +236,22 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jbnhanActionPerformed
 
     private void jbchiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbchiaActionPerformed
-        // TODO add your handling code here:
+     try{String so1Str = txtSo1.getText();
+        String so2Str = txtSo2.getText();
+
+        // Chuyển đổi chuỗi thành số nguyên
+        int so1 = Integer.parseInt(so1Str);
+        int so2 = Integer.parseInt(so2Str);
+
+        // Tính chia
+        int ketQua = so1 / so2;
+
+        // Hiển thị kết quả
+        txtKetQua.setText(String.valueOf(ketQua));
+    } catch (NumberFormatException e) {
+        // Hiển thị thông báo lỗi nếu không phải là số nguyên
+        JOptionPane.showMessageDialog(this, "Thông báo lỗi", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jbchiaActionPerformed
 
     /**
