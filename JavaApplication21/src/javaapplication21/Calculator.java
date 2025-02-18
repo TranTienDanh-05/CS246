@@ -4,6 +4,8 @@
  */
 package javaapplication21;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -253,7 +255,14 @@ public class Calculator extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Thông báo lỗi", "Lỗi", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jbchiaActionPerformed
-
+    private void luuKetQuaVaoTep(int ketQua) {
+    try (FileWriter writer = new FileWriter("bai1.txt")) {
+        writer.write("Kết quả: " + ketQua);
+    } catch (IOException e) {
+        // Hiển thị thông báo lỗi nếu có lỗi trong khi ghi tệp
+        JOptionPane.showMessageDialog(this, "Lỗi khi ghi tệp", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
+}
     /**
      * @param args the command line arguments
      */
