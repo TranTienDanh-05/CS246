@@ -173,9 +173,9 @@ public class Calculator extends javax.swing.JFrame {
         txtKetQua.setText(String.valueOf(ketQua));
         try {
             FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
-            writer.write("So thu nhat: " + so1 + "\n");
-            writer.write("So thu hai: " + so2 + "\n");
-            writer.write("Tong: " + (so1+so2) + "\n");
+            writer.write(so1);
+            writer.write(" + " + so2);
+            writer.write(" = " + ketQua + "\n");
             writer.close();
             System.out.println("Da luu ket qua vao file data.txt!");
         } catch (IOException e) {
@@ -214,6 +214,16 @@ public class Calculator extends javax.swing.JFrame {
 
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
+        try {
+            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
+            writer.write(so1);
+            writer.write(" - " + so2);
+            writer.write(" = " + ketQua + "\n");
+            writer.close();
+            System.out.println("Da luu ket qua vao file data.txt!");
+        } catch (IOException e) {
+            System.out.println("Loi luu file: " + e.getMessage());
+        }
     } catch (NumberFormatException e) {
         // Hiển thị thông báo lỗi nếu không phải là số nguyên
         JOptionPane.showMessageDialog(this, "Thông báo lỗi", "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -235,6 +245,16 @@ public class Calculator extends javax.swing.JFrame {
 
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
+        try {
+            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
+            writer.write(so1);
+            writer.write(" * " + so2);
+            writer.write(" = " + ketQua + "\n");
+            writer.close();
+            System.out.println("Da luu ket qua vao file data.txt!");
+        } catch (IOException e) {
+            System.out.println("Loi luu file: " + e.getMessage());
+        }
     } catch (NumberFormatException e) {
         // Hiển thị thông báo lỗi nếu không phải là số nguyên
         JOptionPane.showMessageDialog(this, "Thông báo lỗi", "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -254,6 +274,16 @@ public class Calculator extends javax.swing.JFrame {
 
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
+        try {
+            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
+            writer.write(so1);
+            writer.write(" / " + so2);
+            writer.write(" = " + ketQua + "\n");
+            writer.close();
+            System.out.println("Da luu ket qua vao file data.txt!");
+        } catch (IOException e) {
+            System.out.println("Loi luu file: " + e.getMessage());
+        }
     } catch (NumberFormatException e) {
         // Hiển thị thông báo lỗi nếu không phải là số nguyên
         JOptionPane.showMessageDialog(this, "Thông báo lỗi", "Lỗi", JOptionPane.ERROR_MESSAGE);
