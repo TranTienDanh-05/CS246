@@ -204,7 +204,7 @@ public class Calculator extends javax.swing.JFrame {
         int so1 = Integer.parseInt(so1Str);
         int so2 = Integer.parseInt(so2Str);
 
-        // Tính tổng
+        // Tính trừ
         int ketQua = so1 + so2;
 
         // Hiển thị kết quả
