@@ -170,8 +170,13 @@ public class Calculator extends javax.swing.JFrame {
         int ketQua = so1 + so2;
 
         // Hiển thị kết quả
+<<<<<<< Updated upstream
         txtKetQua.setText(String.valueOf(ketQua));
         try {
+=======
+        txtKetQua.setText(String.valueOf(ketQua));  
+         try {
+>>>>>>> Stashed changes
             FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
             writer.write(so1);
             writer.write(" + " + so2);
