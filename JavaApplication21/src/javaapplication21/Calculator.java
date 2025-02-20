@@ -4,6 +4,8 @@
  */
 package javaapplication21;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -39,6 +41,10 @@ public class Calculator extends javax.swing.JFrame {
         txtSo1 = new javax.swing.JTextField();
         txtKetQua = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jldocdulieutufilera = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtContent = new javax.swing.JTextArea();
+        btnLoad = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -104,6 +110,19 @@ public class Calculator extends javax.swing.JFrame {
 
         jLabel3.setText("kết quả");
 
+        jldocdulieutufilera.setText("Đọc dữ liệu từ file data.txt");
+
+        txtContent.setColumns(20);
+        txtContent.setRows(5);
+        jScrollPane3.setViewportView(txtContent);
+
+        btnLoad.setText("Cập nhật file lên");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,23 +132,33 @@ public class Calculator extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbcong)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbtru)
                     .addComponent(txtSo1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addComponent(txtSo2))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSo2)
+                    .addComponent(txtKetQua))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbnhan)
-                        .addGap(65, 65, 65)
-                        .addComponent(jbchia))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jldocdulieutufilera))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbnhan)
+                                .addGap(65, 65, 65)
+                                .addComponent(jbchia))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLoad)
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,17 +169,26 @@ public class Calculator extends javax.swing.JFrame {
                     .addComponent(jbtru)
                     .addComponent(jbnhan)
                     .addComponent(jbchia))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtSo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtSo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jldocdulieutufilera)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtSo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtSo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLoad)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,8 +210,8 @@ public class Calculator extends javax.swing.JFrame {
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
         try {
-            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
-            writer.write(so1);
+            FileWriter writer = new FileWriter("data.txt",true); // Tạo file hoặc ghi đè file cũ
+            writer.write(""+so1);
             writer.write(" + " + so2);
             writer.write(" = " + ketQua + "\n");
             writer.close();
@@ -215,8 +253,8 @@ public class Calculator extends javax.swing.JFrame {
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
         try {
-            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
-            writer.write(so1);
+            FileWriter writer = new FileWriter("data.txt",true); // Tạo file hoặc ghi đè file cũ
+            writer.write(""+so1);
             writer.write(" - " + so2);
             writer.write(" = " + ketQua + "\n");
             writer.close();
@@ -246,8 +284,8 @@ public class Calculator extends javax.swing.JFrame {
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
         try {
-            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
-            writer.write(so1);
+            FileWriter writer = new FileWriter("data.txt",true); // Tạo file hoặc ghi đè file cũ
+            writer.write(""+so1);
             writer.write(" * " + so2);
             writer.write(" = " + ketQua + "\n");
             writer.close();
@@ -275,8 +313,8 @@ public class Calculator extends javax.swing.JFrame {
         // Hiển thị kết quả
         txtKetQua.setText(String.valueOf(ketQua));
         try {
-            FileWriter writer = new FileWriter("data.txt"); // Tạo file hoặc ghi đè file cũ
-            writer.write(so1);
+            FileWriter writer = new FileWriter("data.txt",true); // Tạo file hoặc ghi đè file cũ
+            writer.write(""+so1);
             writer.write(" / " + so2);
             writer.write(" = " + ketQua + "\n");
             writer.close();
@@ -289,14 +327,18 @@ public class Calculator extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Thông báo lỗi", "Lỗi", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jbchiaActionPerformed
-    private void luuKetQuaVaoTep(int ketQua) {
-    try (FileWriter writer = new FileWriter("bai1.txt")) {
-        writer.write("Kết quả: " + ketQua);
-    } catch (IOException e) {
-        // Hiển thị thông báo lỗi nếu có lỗi trong khi ghi tệp
-        JOptionPane.showMessageDialog(this, "Lỗi khi ghi tệp", "Lỗi", JOptionPane.ERROR_MESSAGE);
-    }
-}
+
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        try (BufferedReader reader = new BufferedReader(new FileReader("data.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                txtContent.append(line + "\n"); // Thêm từng dòng vào JTextArea
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi đọc file: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnLoadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,18 +373,22 @@ public class Calculator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbchia;
     private javax.swing.JButton jbcong;
     private javax.swing.JButton jbnhan;
     private javax.swing.JButton jbtru;
+    private javax.swing.JLabel jldocdulieutufilera;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
+    private javax.swing.JTextArea txtContent;
     private javax.swing.JTextField txtKetQua;
     private javax.swing.JTextField txtSo1;
     private javax.swing.JTextField txtSo2;
