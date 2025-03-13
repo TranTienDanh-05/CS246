@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package test;
+package Test;
 
+/**
+ *
+ * @author trand
+ */
 import com.mycompany.userapp.User;
 import junit.framework.TestCase;
 
 public class UserTest extends TestCase {
-// Các test case sẽ được thêm ở bước 3 
 
     public void testUserConstructor() {
         User user = new User("user1", "user1@cmucs246.com");
