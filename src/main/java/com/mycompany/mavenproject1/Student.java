@@ -39,7 +39,7 @@ public class Student {
     public void updateName(String newName) {
         this.name = newName;
     }
-    public void setStudentId(){
-        this.studentId = studentId;
+    public void setStudentId(String newId){
+        this.studentId = newId;
     }
 }

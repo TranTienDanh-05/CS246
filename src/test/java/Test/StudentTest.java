@@ -25,4 +25,9 @@ public class StudentTest {
         st.setAge(3);
         assertEquals(3, st.getAge());
     }
+    public void testgetStudentId(){
+        Student st = new Student("1","danh",30);
+        st.setStudentId("5");
+        assertEquals("5",st.getStudentId());
+    }
 }
